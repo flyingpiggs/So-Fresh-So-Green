@@ -47,16 +47,19 @@ function pieChart(diameter, data) {
 */
 
 const numbers = require('electron').remote.getGlobal('sharedObject').chosenData[0]; // = [30, 10, 25, 35, 70, 48, 75, 67];
+let colors;// = MakeColors( numbers );
+
 
 function setup() {
   createCanvas(720, 400);
   noStroke();
+  colors = MakeColors( numbers ); 
   noLoop(); // Run once and stop
 }
 
 function draw() {
-  background(100);
-  PieChart(300, numbers);
+  background(100, 100);
+  PieChart(300, numbers, colors);
 }
 
 function PieChart( diameter, data, colors ) {
@@ -99,5 +102,64 @@ function GetAngles( data ) {
   }
   return angles; 
 }
+
+function MakeColors( data ) {
+  let size = data.length;
+  let distanceLeft = 1500; //rough estimate, but we take 256 "steps" for an up or down of an RGB, thus for 3 up-downs, 256 * 6
+  let step = floor( 1500 / size );
+  let tilStateChange = 250;
+  let r = 251, g = 1, b = 1; 
+  let states = [
+    'g_up',
+    'r_down',
+    'b_up',
+    'g_down',
+    'r_up',
+    'b_down'
+  ];
+  let colors = []; 
+  let state = 0; 
+  
+  for ( let i = 0; i < size; ) {
+    while( step != 0 && tilStateChange != 0 ) {
+      switch( states[state] ) {
+        case 'g_up':
+          g++;
+          break;
+        case 'r_down': 
+          r--;
+          break;
+        case 'b_up': 
+          b++;
+          break;
+        case 'g_down': 
+          g--;
+          break;
+        case 'r_up': 
+          r++;
+          break;
+        case 'b_down': 
+          b--;
+          break;
+        default:
+          console.log('There was an error in making colors while loop'); 
+      }
+      step--;
+      tilStateChange--; 
+    }
+    if ( tilStateChange == 0 ) {
+      state++;
+      tilStateChange = 250; 
+    }
+    if ( step == 0 ) {
+      let c = color(r, g, b);
+      colors.push( c ); 
+      step = floor( 1500 / size );
+      i++; 
+    }
+  }
+
+  return colors; 
+} 
 
 
