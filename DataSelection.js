@@ -10,7 +10,7 @@ const BOX_WIDTH = 80, BOX_LENGTH = 80; //it's a square for now
 const X_OFFSET = 10, Y_OFFSET = 20;
 const BIG_TEXT_SIZE = 18, SMALL_TEXT_SIZE = 12;  
 
-let xStart = 25, yStart = 25;
+let xStart = 25, yStart = 25, xEnd = 0; yEnd = 0;
 let xDiff = 0, yDiff = 0; 
 let rowCount = 0, columnCount = 0;
 let boxIndices = []; //each entry is a Point structure, has xPos and yPos. 
@@ -106,9 +106,33 @@ function mouseDragged() {
   return false;
 }
 
-/*function mouseReleased() {
+function mouseReleased() {
   xDiff = mouseX - xStart; 
   yDiff = mouseY - yStart; 
   // prevent default
+  xEnd = mouseX; 
+  yEnd = mouseY;
+  let chosenData = GrabData();
+  console.log( chosenData ); 
+  shared.chosenData = chosenData; 
+ 
   return false;
-}*/
+}
+
+function GrabData() {
+  let rowIndex, colIndex;
+  let chosenData = [];  
+
+  for( let yCurrent = yStart; yCurrent < yEnd; yCurrent += BOX_LENGTH )  {
+    let rowData = [];
+    for ( let xCurrent = xStart; xCurrent < xEnd; xCurrent += BOX_WIDTH  ) {
+      rowIndex = Math.floor( ( yCurrent - X_OFFSET ) / BOX_LENGTH );
+      colIndex = Math.floor( ( xCurrent - X_OFFSET ) / BOX_WIDTH );
+      rowData.push( csvArray[rowIndex][colIndex] );
+    }
+    chosenData.push( rowData ); 
+  }
+  return chosenData; 
+}
+
+
