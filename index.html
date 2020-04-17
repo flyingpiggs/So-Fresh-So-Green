@@ -37,16 +37,20 @@
               <div class="dropzone" id="tempPins"></div>
               <h3>Light Sensor Pins</h3>
               <div class="dropzone" id="lightPins"></div>
-              <h3>Humidty Sensor Pins</h3>
+              <h3>Humidity Sensor Pins</h3>
               <div class="dropzone" id="humidityPins"></div>
             </div>
+
 		<!--Make this block contain user inputs on frequency of data collection-->
             <!-- Radio button source: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
                  Make each sensor type's frequency options its own set of radio buttons -->
-            <div id="lightOptionsContainer">
+            <br>
+            <div class="collectionRates" id="lightOptionsContainer">
               <label for="lightOffset">Enter the starting time for light sensors</label>
               <input type="text" id="lightOffset" maxlength="5" value="00:00">
               <div id="lightRateContainer">
+                <label for="lightRateContainer">How many times a day should data be collected from the light sensors? </label>
+                <br>
                 <input type="radio" id="lightRate1" class="lightOptions" name="lightRate" value="1" checked>
                 <label for="lightRate1">1</label>
                 <input type="radio" id="lightRate2" class="lightOptions" name="lightRate" value="2">
@@ -55,6 +59,7 @@
                 <label for="lightRate3">3</label>
                 <input type="radio" id="lightRate4" class="lightOptions" name="lightRate" value="4">
                 <label for="lightRate4">4</label>
+                <br>
                 <input type="radio" id="lightRate6" class="lightOptions" name="lightRate" value="6">
                 <label for="lightRate6">6</label>
                 <input type="radio" id="lightRate8" class="lightOptions" name="lightRate" value="8">
@@ -65,10 +70,13 @@
                 <label for="lightRate24">24</label>
               </div>
             </div>
-            <div id="tempOptionsContainer">
+            <br>
+            <div class="collectionRates" id="tempOptionsContainer">
               <label for="tempOffset">Enter the starting time for temperature sensors</label>
               <input type="text" id="tempOffset" maxlength="5" value="00:00">
               <div id="tempRateContainer">
+                <label for="tempRateContainer">How many times a day should data be collected from the temperature sensors? </label>
+                <br>
                 <input type="radio" id="tempRate1" class="tempOptions" name="tempRate" value="1" checked>
                 <label for="tempRate1">1</label>
                 <input type="radio" id="tempRate2" class="tempOptions" name="tempRate" value="2">
@@ -77,6 +85,7 @@
                 <label for="tempRate3">3</label>
                 <input type="radio" id="tempRate4" class="tempOptions" name="tempRate" value="4">
                 <label for="tempRate4">4</label>
+                <br>
                 <input type="radio" id="tempRate6" class="tempOptions" name="tempRate" value="6">
                 <label for="tempRate6">6</label>
                 <input type="radio" id="tempRate8" class="tempOptions" name="tempRate" value="8">
@@ -87,10 +96,13 @@
                 <label for="tempRate24">24</label>
               </div>
             </div>
-            <div id="humidityOptionsContainer">
+            <br>
+            <div class="collectionRates" id="humidityOptionsContainer">
               <label for="humidityOffset">Enter the starting time for humidity sensors</label>
               <input type="text" id="humidityOffset" maxlength="5" value="00:00">
               <div id="humidityRateContainer">
+                <label for="humidityRateContainer">How many times a day should data be collected from the humidity sensors? </label>
+                <br>
                 <input type="radio" id="humidityRate1" class="humidityOptions" name="humidityRate" value="1" checked>
                 <label for="humidityRate1">1</label>
                 <input type="radio" id="humidityRate2" class="humidityOptions" name="humidityRate" value="2">
@@ -99,6 +111,7 @@
                 <label for="humidityRate3">3</label>
                 <input type="radio" id="humidityRate4" class="humidityOptions" name="humidityRate" value="4">
                 <label for="humidityRate4">4</label>
+                <br>
                 <input type="radio" id="humidityRate6" class="humidityOptions" name="humidityRate" value="6">
                 <label for="humidityRate6">6</label>
                 <input type="radio" id="humidityRate8" class="humidityOptions" name="humidityRate" value="8">
