@@ -59,7 +59,16 @@ calcAverage.addEventListener( "click", () => {
   console.log( getRow );
   resultDisplay.innerHTML = jStatResult; 
 }, false );
- 
+
+let calcMode = document.getElementById( 'calcMode' ); 
+calcMode.addEventListener( "click", () => { 
+  let getRow = shared.chosenData[0];
+  //getRow.splice( 0, 1 );
+  jStatResult = jStat.mode( getRow ); 
+  console.log( jStatResult );
+  console.log( getRow );
+  resultDisplay.innerHTML = jStatResult; 
+}, false ); 
 
 /* This block is code is for making the divs that we can drag around to indicate what the state of each pin is */
 const PIN_COUNT = 50;
