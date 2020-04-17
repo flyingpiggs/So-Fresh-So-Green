@@ -46,9 +46,7 @@ function pieChart(diameter, data) {
   and the sum of all data. 
 */
 
-const numbers = [30, 10, 25, 35, 70, 48, 75, 67];
-
-let shared = require('electron').remote.getGlobal('sharedObject');
+const numbers = require('electron').remote.getGlobal('sharedObject').chosenData[0]; // = [30, 10, 25, 35, 70, 48, 75, 67];
 
 function setup() {
   createCanvas(720, 400);

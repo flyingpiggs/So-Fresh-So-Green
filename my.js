@@ -52,8 +52,8 @@ let jStatResult = null; //this is a global
 let resultDisplay = document.getElementById( 'displayResults' );
 let calcAverage = document.getElementById( 'calcAverage' );
 calcAverage.addEventListener( "click", () => { 
-  let getRow = shared.dataArray[4];
-  getRow.splice( 0, 1 );
+  let getRow = shared.chosenData[0];
+  //getRow.splice( 0, 1 );
   jStatResult = jStat.mean( getRow ); 
   console.log( jStatResult );
   console.log( getRow );
